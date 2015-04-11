@@ -9,5 +9,8 @@ public class SourceControlTestClass {
 		p = x + y;
 		q = x - p;
 		p = q++;
+		
+		//test adding a line of code 
+		q++;
 	}
 }
