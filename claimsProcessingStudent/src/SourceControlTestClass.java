@@ -6,7 +6,7 @@ public class SourceControlTestClass {
 		float p = 0;
 		float q = 0;
 				
-		p = x + 6;
+		p = x + 1;
 		q = x - p;
 		p = q++;
 		
