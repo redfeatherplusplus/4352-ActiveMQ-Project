@@ -18,5 +18,6 @@ public class SourceControlTestClass {
 		
 		//elise test
 		--p;
+		++p;
 	}
 }
