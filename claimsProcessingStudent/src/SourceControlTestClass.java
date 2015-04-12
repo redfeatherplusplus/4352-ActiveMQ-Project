@@ -15,5 +15,8 @@ public class SourceControlTestClass {
 		
 		//luke test
 		p++;
+		
+		//elise test
+		--p;
 	}
 }
