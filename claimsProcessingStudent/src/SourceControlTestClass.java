@@ -12,5 +12,8 @@ public class SourceControlTestClass {
 		
 		//test adding a line of code 
 		q++;
+		
+		//luke test
+		p++;
 	}
 }
