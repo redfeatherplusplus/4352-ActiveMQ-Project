@@ -8,10 +8,10 @@ public class SourceControlTestClass {
 				
 		
 		//conflict 1
-		p = x + 1;
+		p = x + 10;
 		
 		//conflict 2
-		q = x - 4;
+		q = x - 42;
 		
 		//test adding a line of code 
 		q++;
