@@ -6,9 +6,12 @@ public class SourceControlTestClass {
 		float p = 0;
 		float q = 0;
 				
-		p = 0;
-		q = x - p;
-		p = q++;
+		
+		//conflict 1
+		p = x + 1;
+		
+		//conflict 2
+		q = x - 4;
 		
 		//test adding a line of code 
 		q++;
