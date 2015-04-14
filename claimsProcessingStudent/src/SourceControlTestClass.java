@@ -11,7 +11,7 @@ public class SourceControlTestClass {
 		p = x + 20;
 		
 		//conflict 2
-		p++;
+		p = p + 1;
 		
 		//test adding a line of code 
 		q++;
