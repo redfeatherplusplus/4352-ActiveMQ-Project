@@ -1,7 +1,7 @@
 
 public class SourceControlTestClass {
 	public SourceControlTestClass() {
-		int x = 7;
+		int x = 5;
 		int y = 5;
 		float p = 0;
 		float q = 0;
