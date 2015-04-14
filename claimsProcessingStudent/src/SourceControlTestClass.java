@@ -8,7 +8,7 @@ public class SourceControlTestClass {
 				
 		
 		//conflict 1
-		p = x + 10;
+		p = x + 15;
 		
 		//conflict 2
 		p = p + 1;
