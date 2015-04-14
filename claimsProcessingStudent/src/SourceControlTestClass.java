@@ -8,11 +8,7 @@ public class SourceControlTestClass {
 				
 		
 		//conflict 1
-<<<<<<< HEAD
 		p = x + 20;
-=======
-		p = x + 30;
->>>>>>> branch 'master' of https://github.com/redfeatherplusplus/4352-ActiveMQ-Project
 		
 		//conflict 2
 		p++;
