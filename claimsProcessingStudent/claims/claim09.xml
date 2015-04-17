@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 <claim>
 	<memberID>member4</memberID>
 	<providerID>provider1</providerID>
 	<procedureCode>GP101</procedureCode>
 	<replyTo>4352led@googlegroups.com</replyTo>
 	<description>This is a non-covered GeneralPractice claim that should be denied</description>
+=======
+<claim>
+	<memberID>member4</memberID>
+	<providerID>provider1</providerID>
+	<procedureCode>GP101</procedureCode>
+	<replyTo>4352led@googlegroups.com</replyTo>
+	<description>This is a non-covered GeneralPractice claim that should be denied</description>
+>>>>>>> branch 'master' of https://github.com/redfeatherplusplus/4352-ActiveMQ-Project
 </claim>

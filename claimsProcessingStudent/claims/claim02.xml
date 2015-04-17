@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 <claim>
 	<memberID>member1</memberID>
 	<providerID>provider999</providerID>
 	<procedureCode>GP101</procedureCode>
 	<replyTo>4352led@googlegroups.com</replyTo>
 	<description>This is a rejected claim with an invalid provider id</description>
+=======
+<claim>
+	<memberID>member1</memberID>
+	<providerID>provider999</providerID>
+	<procedureCode>GP101</procedureCode>
+	<replyTo>4352led@googlegroups.com</replyTo>
+	<description>This is a rejected claim with an invalid provider id</description>
+>>>>>>> branch 'master' of https://github.com/redfeatherplusplus/4352-ActiveMQ-Project
 </claim>

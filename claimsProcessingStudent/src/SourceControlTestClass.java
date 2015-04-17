@@ -1,14 +1,17 @@
 
 public class SourceControlTestClass {
 	public SourceControlTestClass() {
-		int x = 7;
+		int x = 5;
 		int y = 5;
 		float p = 0;
 		float q = 0;
 				
-		p = x + y;
-		q = x - p;
-		p = q++;
+		
+		//conflict 1
+		p = x + 5;
+		
+		//conflict 2
+		p++;
 		
 		//test adding a line of code 
 		q++;

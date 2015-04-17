@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 <claim>
 	<memberID>member2</memberID>
 	<providerID>provider3</providerID>
 	<procedureCode>D402</procedureCode>
 	<replyTo>4352led@googlegroups.com</replyTo>
 	<description>This is a non-covered Dental claim that should be denied</description>
+=======
+<claim>
+	<memberID>member2</memberID>
+	<providerID>provider3</providerID>
+	<procedureCode>D402</procedureCode>
+	<replyTo>4352led@googlegroups.com</replyTo>
+	<description>This is a non-covered Dental claim that should be denied</description>
+>>>>>>> branch 'master' of https://github.com/redfeatherplusplus/4352-ActiveMQ-Project
 </claim>
