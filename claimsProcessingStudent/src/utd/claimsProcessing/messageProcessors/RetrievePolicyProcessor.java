@@ -1,6 +1,21 @@
 package utd.claimsProcessing.messageProcessors;
 
 import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
+import javax.jms.Queue;
+import javax.jms.Session;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+
+import utd.claimsProcessing.dao.PolicyDAO;
+import utd.claimsProcessing.domain.Claim;
+import utd.claimsProcessing.domain.ClaimFolder;
+import utd.claimsProcessing.domain.Policy;
+import utd.claimsProcessing.domain.RejectedClaimInfo;
 
 public class RetrievePolicyProcessor extends MessageProcessor implements MessageListener{
 	private final static Logger logger = Logger.getLogger(RetrievePolicyProcessor.class);
@@ -23,7 +38,7 @@ public class RetrievePolicyProcessor extends MessageProcessor implements Message
 			Object object = ((ObjectMessage) message).getObject();
 			ClaimFolder claimFolder = (ClaimFolder)object;
 			
-			String policyID = claimFolder.getPolicy();
+			String policyID = claimFolder.getPolicy().getID();
 			Policy policy = PolicyDAO.getSingleton().retrievePolicy(policyID);
 			
 			//check that policy is valid
@@ -37,13 +52,13 @@ public class RetrievePolicyProcessor extends MessageProcessor implements Message
 				rejectClaim(claimFolder);
 			}
 			else{
-				logger.debug("Found Policy: " + policy.retrievePolicy());
+				logger.debug("Found Policy: " + policy.getID());
 				
 				claimFolder.setPolicy(policy);
 				
 				Message claimMessage = getSession().createObjectMessage(claimFolder);
 				producer.send(claimMessage);
-				logger.debug("Finished Sending: " + policy.retrievePolicy());
+				logger.debug("Finished Sending: " + policy.getID());
 			}
 			
 		}

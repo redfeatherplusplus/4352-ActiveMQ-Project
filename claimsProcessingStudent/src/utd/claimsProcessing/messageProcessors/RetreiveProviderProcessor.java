@@ -1,18 +1,32 @@
 package utd.claimsProcessing.messageProcessors;
 
 import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
+import javax.jms.Queue;
+import javax.jms.Session;
 
-import utd.claimsProcessing.messageProcessors.MessageListener;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+
+import utd.claimsProcessing.dao.ProviderDAO;
+import utd.claimsProcessing.domain.Claim;
+import utd.claimsProcessing.domain.ClaimFolder;
+import utd.claimsProcessing.domain.Provider;
+import utd.claimsProcessing.domain.RejectedClaimInfo;
 
 public class RetreiveProviderProcessor extends MessageProcessor implements MessageListener{
 	
-	private final static Logger logger = Logger.getLogger(RetrieveProviderProcessor.class);
+	RetreiveProviderProcessor(Session session) {
+		super(session);
+		// TODO Auto-generated constructor stub
+	}
+
+	private final static Logger logger = Logger.getLogger(RetreiveProviderProcessor.class);
 	
 	private MessageProducer producer;
-	
-	public RetrieveProviderProcessor(Session session){
-		super(session);
-	}
 	
 	public void initialize() throws JMSException{
 		Queue queue = getSession().createQueue(QueueNames.retrievePolicy);
@@ -44,7 +58,7 @@ public class RetreiveProviderProcessor extends MessageProcessor implements Messa
 				
 				Message claimMessage = getSession().createObjectMessage(claimFolder);
 				producer.send(claimMessage);
-				logger.debug("Finished Sending: " + provider.getProviderName + " ID: " + provider.getID());
+				logger.debug("Finished Sending: " + provider.getProviderName() + " ID: " + provider.getID());
 			}
 		}
 		catch (Exception ex){
