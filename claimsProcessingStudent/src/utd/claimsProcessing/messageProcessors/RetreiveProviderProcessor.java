@@ -21,7 +21,6 @@ public class RetreiveProviderProcessor extends MessageProcessor implements Messa
 	
 	RetreiveProviderProcessor(Session session) {
 		super(session);
-		// TODO Auto-generated constructor stub
 	}
 
 	private final static Logger logger = Logger.getLogger(RetreiveProviderProcessor.class);
