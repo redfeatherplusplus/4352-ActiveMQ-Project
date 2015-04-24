@@ -17,13 +17,13 @@ import utd.claimsProcessing.domain.ClaimFolder;
 import utd.claimsProcessing.domain.Provider;
 import utd.claimsProcessing.domain.RejectedClaimInfo;
 
-public class RetreiveProviderProcessor extends MessageProcessor implements MessageListener{
+public class RetrieveProviderProcessor extends MessageProcessor implements MessageListener{
 	
-	RetreiveProviderProcessor(Session session) {
+	public RetrieveProviderProcessor(Session session) {
 		super(session);
 	}
 
-	private final static Logger logger = Logger.getLogger(RetreiveProviderProcessor.class);
+	private final static Logger logger = Logger.getLogger(RetrieveProviderProcessor.class);
 	
 	private MessageProducer producer;
 	

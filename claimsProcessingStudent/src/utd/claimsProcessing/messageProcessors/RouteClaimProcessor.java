@@ -39,7 +39,7 @@ public class RouteClaimProcessor extends MessageProcessor implements MessageList
 	private MessageProducer producerRadiology; 												   
 	private MessageProducer producerOptometry; 												      
 	
-	RouteClaimProcessor(Session session) {
+	public RouteClaimProcessor(Session session) {
 		super(session);
 	}
 
