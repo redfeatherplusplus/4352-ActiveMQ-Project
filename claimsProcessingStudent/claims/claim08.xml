@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 <claim>
 	<memberID>member4</memberID>
 	<providerID>provider3</providerID>
 	<procedureCode>O601</procedureCode>
 	<replyTo>4352led@googlegroups.com</replyTo>
 	<description>This is a valid optometry claim that should be paid</description>
-=======
-<claim>
-	<memberID>member4</memberID>
-	<providerID>provider3</providerID>
-	<procedureCode>O601</procedureCode>
-	<replyTo>4352led@googlegroups.com</replyTo>
-	<description>This is a valid optometry claim that should be paid</description>
->>>>>>> branch 'master' of https://github.com/redfeatherplusplus/4352-ActiveMQ-Project
 </claim>
