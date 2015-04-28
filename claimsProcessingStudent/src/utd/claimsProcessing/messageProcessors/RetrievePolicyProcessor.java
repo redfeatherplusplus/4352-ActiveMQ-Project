@@ -38,7 +38,7 @@ public class RetrievePolicyProcessor extends MessageProcessor implements Message
 			Object object = ((ObjectMessage) message).getObject();
 			ClaimFolder claimFolder = (ClaimFolder)object;
 			
-			String policyID = claimFolder.getPolicy().getID();
+			String policyID = claimFolder.getMember().getPolicyID();
 			Policy policy = PolicyDAO.getSingleton().retrievePolicy(policyID);
 			
 			//check that policy is valid
