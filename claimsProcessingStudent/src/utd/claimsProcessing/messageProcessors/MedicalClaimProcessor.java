@@ -43,29 +43,6 @@ public abstract class MedicalClaimProcessor extends MessageProcessor
 	}
 	
 	
-	//Validate the policy is active
-	protected boolean validatePolicy(ClaimFolder claimFolder)
-	{
-		boolean validPolicy = false;
-		
-		Claim claim = claimFolder.getClaim();
-		Policy policy = claimFolder.getPolicy();
-		
-		//Check policy state
-		if(policy.getPolicyState() == PolicyState.active)
-		{
-			//Active policy
-			validPolicy = true;
-		}
-		else
-		{
-			//Not active (expired, suspended, etc)
-			validPolicy = false;
-		}
-		
-		return validPolicy;
-	}
-	
 	//Validate that the is covered by the policy
 	protected boolean validateProcedure(ClaimFolder claimFolder)
 	{

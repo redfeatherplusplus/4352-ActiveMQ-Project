@@ -76,7 +76,6 @@ public class RouteClaimProcessor extends MessageProcessor implements MessageList
 			Policy policy = PolicyDAO.getSingleton().retrievePolicy(policyID);
 			Procedure procedure = ProcedureDAO.getSingleton().retrieveByCode(procedureCode);
 			
-			
 			//check if the policy is not active
 			if(!policy.getPolicyState().equals(PolicyState.active)) {
 				//if the policy is not active find out why
@@ -113,11 +112,8 @@ public class RouteClaimProcessor extends MessageProcessor implements MessageList
 					rejectClaim(claimFolder);
 				}
 			}
-			
-			
 			//if the policy is active, send the claim folder to the correct processor
 			else {
-			
 				logger.debug("Found Claim: " + memberID + " " + providerID + " " + policyID + " " + procedureCode);
 			
 				//send the claim to the appropriate queue
