@@ -14,10 +14,13 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.log4j.Logger;
 
 import utd.claimsProcessing.messageProcessors.BuildClaimsFolderProcessor;
+import utd.claimsProcessing.messageProcessors.DentalClaimProcessor;
 import utd.claimsProcessing.messageProcessors.DenyClaimsProcessor;
 import utd.claimsProcessing.messageProcessors.MessageProcessor;
+import utd.claimsProcessing.messageProcessors.OptometryClaimProcessor;
 import utd.claimsProcessing.messageProcessors.PaymentProcessor;
 import utd.claimsProcessing.messageProcessors.QueueNames;
+import utd.claimsProcessing.messageProcessors.RadiologyClaimProcessor;
 import utd.claimsProcessing.messageProcessors.RejectedClaimsProcessor;
 import utd.claimsProcessing.messageProcessors.RetrieveMemberProcessor;
 import utd.claimsProcessing.messageProcessors.RetrievePolicyProcessor;
@@ -84,6 +87,9 @@ public class ClaimsProcessingApp implements ExceptionListener
 		installProcessor(new RouteClaimProcessor(session), QueueNames.routeClaim);
 		
 		installProcessor(new GeneralPracticeClaimProcessor(session), QueueNames.processGPClaim);		
+		installProcessor(new DentalClaimProcessor(session), QueueNames.processDentalClaim);	
+		installProcessor(new RadiologyClaimProcessor(session), QueueNames.processRadiologyClaim);	
+		installProcessor(new OptometryClaimProcessor(session), QueueNames.processOptometryClaim);	
 
 		installProcessor(new PaymentProcessor(session), QueueNames.payClaim);
 		installProcessor(new DenyClaimsProcessor(session), QueueNames.denyClaim);
