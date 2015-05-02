@@ -13,6 +13,7 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.log4j.Logger;
 
+import utd.claimsProcessing.domain.ClaimRestrictions;
 import utd.claimsProcessing.messageProcessors.BuildClaimsFolderProcessor;
 import utd.claimsProcessing.messageProcessors.DentalClaimProcessor;
 import utd.claimsProcessing.messageProcessors.DenyClaimsProcessor;

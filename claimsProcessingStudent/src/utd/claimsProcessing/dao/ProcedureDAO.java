@@ -36,6 +36,13 @@ public class ProcedureDAO extends BaseDAO
 	{
 		return procedures.get(procedureID);
 	}
+	
+	/**
+	 * Returns the claimRestriction of a procedureID
+	 */
+	public int retrieveClaimLRestriction(String procedureID) {
+		return procedures.get(procedureID).getClaimRestriction();
+	}
 
 	/**
 	 * Returns the instance with the given procedureCode or null if none is found.

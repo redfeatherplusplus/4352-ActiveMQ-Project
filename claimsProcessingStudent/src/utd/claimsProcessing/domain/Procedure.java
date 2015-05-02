@@ -15,6 +15,7 @@ public class Procedure implements EntityObject
 	private String procedureCode;
 	private String description;
 	private double paymentAmount;
+	private int claimRestriction = 0;
 
 	public String getID()
 	{
@@ -66,4 +67,11 @@ public class Procedure implements EntityObject
 		this.paymentAmount = paymentAmount;
 	}
 
+	public int getClaimRestriction() {
+		return claimRestriction;
+	}
+	
+	public void setClaimRestriction(int claimRestriction) {
+		this.claimRestriction = claimRestriction;
+	}
 }

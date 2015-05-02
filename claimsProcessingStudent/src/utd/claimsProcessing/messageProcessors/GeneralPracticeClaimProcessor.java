@@ -1,5 +1,8 @@
 package utd.claimsProcessing.messageProcessors;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -13,6 +16,7 @@ import org.apache.log4j.Logger;
 
 import utd.claimsProcessing.domain.Claim;
 import utd.claimsProcessing.domain.ClaimFolder;
+import utd.claimsProcessing.domain.ClaimRestrictions;
 import utd.claimsProcessing.domain.Policy;
 import utd.claimsProcessing.domain.PolicyState;
 import utd.claimsProcessing.domain.ProcedureCategory;
@@ -23,6 +27,7 @@ public class GeneralPracticeClaimProcessor extends MedicalClaimProcessor impleme
 {
 
 	private MessageProducer producer;
+	private Map<String, Map<String, Integer>> claimCount;
 
 	public GeneralPracticeClaimProcessor(Session session) {
 		super(session, ProcedureCategory.GeneralPractice);
@@ -39,11 +44,57 @@ public class GeneralPracticeClaimProcessor extends MedicalClaimProcessor impleme
 	  try {
 		    Object object = ((ObjectMessage) message).getObject();
 		    ClaimFolder claimFolder = (ClaimFolder) object;
+		    String memberID = claimFolder.getClaim().getMemberID();
+		    String procedureCode = claimFolder.getClaim().getProcedureCode();
 		    
-		    if(validateProcedure(claimFolder)) 
+		    //check if this member has filed a claim before
+	    	if(claimCount.containsKey(memberID)) {
+	    		//check if the member has filed this claim before
+	    		if(claimCount.get(memberID).containsKey(procedureCode)) {
+	    			//check if the member is over the claim limit for this claim
+	    			int currentClaimCount = claimCount.get(memberID).get(procedureCode);
+	  
+	    			if(ClaimRestrictions.overClaimLimit(procedureCode, currentClaimCount)) {
+	    				//Deny - over claim limit
+	    		    	logger.debug("GeneralPracticeClaimProcessor OverClaimLimit");
+	    		    	
+	    				RejectedClaimInfo rejectedClaimInfo = new RejectedClaimInfo(memberID +
+	    						" is over the claim limit for " + procedureCode);
+	    				rejectedClaimInfo.setDescription(claimFolder.getProcedure().getDescription());
+	    				claimFolder.setRejectedClaimInfo(rejectedClaimInfo);
+	    				if(!StringUtils.isBlank(claimFolder.getClaim().getReplyTo())) {
+	    					rejectedClaimInfo.setEmailAddr(claimFolder.getClaim().getReplyTo());
+	    				}
+	    		    	
+	    		    	Message claimMessage = getSession().createObjectMessage(claimFolder);
+	    				denyProducer.send(claimMessage);
+	    			}
+	    		}
+	    	}
+	    	else if(validateProcedure(claimFolder)) 
 		    {
 		    	//Accept - procedure covered
 		    	logger.debug("GeneralPracticeClaimProcessor ProcedureValid");
+		    	
+		    	//increment claimCount corresponding to that member's claim
+		    	if(claimCount.containsKey(memberID)) {
+		    		//check if the member has filed this claim before
+		    		if(claimCount.get(memberID).containsKey(procedureCode)) {
+		    			//the member has filed this claim before, increment the claimCount
+		    			int previousClaimCount = claimCount.get(memberID).get(procedureCode);
+		    			claimCount.get(memberID).replace(procedureCode, previousClaimCount + 1);
+		    		}
+		    		else {
+			    		//this is the first time the member has filed this claim
+		    			claimCount.get(memberID).put(procedureCode, 1);
+		    		}
+		    	}
+		    	else {
+			    	//this is the first time the member has filed a claim
+		    		Map<String, Integer> firstClaim = new HashMap<String, Integer>();
+		    		firstClaim.put(procedureCode, 1);
+	    			claimCount.put(memberID, firstClaim);
+		    	}
 		    	
 				Message claimMessage = getSession().createObjectMessage(claimFolder);
 				payProducer.send(claimMessage);

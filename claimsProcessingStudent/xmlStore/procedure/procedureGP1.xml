@@ -4,4 +4,4 @@
 	<procedureCode>GP101</procedureCode>
 	<description>Standard Blood Test</description>
 	<paymentAmount>123.00</paymentAmount>
-</procedure>
+	<claimRestriction>2</claimRestriction></procedure>
