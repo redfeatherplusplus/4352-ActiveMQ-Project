@@ -65,7 +65,7 @@ public class GeneralPracticeClaimProcessor extends MedicalClaimProcessor impleme
 		    }
 		  }
 		  catch (Exception ex) {
-		    logError("RadiologyClaimProcessor.onMessage() " + ex.getMessage(), ex);
+		    logError("GeneralPracticeClaimProcessor.onMessage() " + ex.getMessage(), ex);
 		  }
 	}
 }
