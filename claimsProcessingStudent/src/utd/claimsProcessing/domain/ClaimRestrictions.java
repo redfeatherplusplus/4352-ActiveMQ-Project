@@ -85,7 +85,7 @@ public class ClaimRestrictions {
 		if(getClaimLimit(procedureCode) == 0) {
 			return (false);
 		}
-		else if (claimCount > getClaimLimit(procedureCode)) {
+		else if (claimCount >= getClaimLimit(procedureCode)) {
 			return (true);
 		} 
 		else {
