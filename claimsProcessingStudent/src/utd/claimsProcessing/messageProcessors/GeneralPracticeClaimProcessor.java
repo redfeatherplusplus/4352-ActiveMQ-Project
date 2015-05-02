@@ -27,7 +27,6 @@ public class GeneralPracticeClaimProcessor extends MedicalClaimProcessor impleme
 {
 
 	private MessageProducer producer;
-	private Map<String, Map<String, Integer>> claimCount;
 
 	public GeneralPracticeClaimProcessor(Session session) {
 		super(session, ProcedureCategory.GeneralPractice);
