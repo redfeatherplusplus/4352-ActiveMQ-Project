@@ -17,7 +17,7 @@ import utd.claimsProcessing.dao.ProcedureDAO;
  */
 public class ClaimRestrictions {
 	private final static Logger logger = Logger.getLogger(ClaimRestrictions.class);
-	private static Map<String, Map<String, Integer>> claimCount;
+	private static HashMap<String, Map<String, Integer>> claimCount = new HashMap<String, Map<String, Integer>>();
 	
 	//map from procedures to procedureLimits
 	public final static Map<String,Integer> procedureLimits;
@@ -74,7 +74,7 @@ public class ClaimRestrictions {
     	}
     	else {
 	    	//this is the first time the member has filed a claim
-    		Map<String, Integer> firstClaim = new HashMap<String, Integer>();
+    		HashMap<String, Integer> firstClaim = new HashMap<String, Integer>();
     		firstClaim.put(procedureCode, 1);
 			claimCount.put(memberID, firstClaim);
     	}
